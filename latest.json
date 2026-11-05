@@ -1,14 +1,14 @@
 {
   "version": "1.0.5",
   "minimum": "1.0.5",
-  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5.zip",
+  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5-r2.zip",
   "urls": [
-    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.5/MGU-SSH-Native-Update-1.0.5.zip",
-    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5.zip"
+    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.5/MGU-SSH-Native-Update-1.0.5-r2.zip",
+    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5-r2.zip"
   ],
-  "sha256": "49769f5c2dbbd26aa52b86bec82c03328339f6fe826d333b7149781fa21bdea2",
-  "size": 122302283,
+  "sha256": "90dc0fe81b825d8717849e8a0c2259759a440e3a033f8f26d984f15bd5bb5db8",
+  "size": 122302321,
   "mandatory": true,
-  "notes": "1.0.5：补上 CarPlay 仪表地图安装所需的 app-privacy；修复安装器可能停在隐藏重启提示；编码丢失时给出明确提示。车机编码为默认值仍需先用 BimmerCode / ISTA / E-Sys 恢复。",
-  "published_at": "2026-11-05T17:41:29+08:00"
+  "notes": "1.0.5（更新包 r2）：修复自动更新包时间戳导致旧文件未被覆盖；补上 CarPlay 安装所需的 app-privacy；修复安装器的隐藏重启提示；编码丢失时给出明确提示。",
+  "published_at": "2026-11-05T17:57:03+08:00"
 }
