@@ -1,0 +1,14 @@
+{
+  "version": "1.0.4",
+  "minimum": "1.0.4",
+  "url": "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.4/MGU-SSH-Native-Update.zip",
+  "urls": [
+    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.4/MGU-SSH-Native-Update.zip",
+    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update.zip"
+  ],
+  "sha256": "30d0711ca2e1f26e503ede28b48f6ac1d18555bf7b62d5679035f501169be14c",
+  "size": 121721787,
+  "mandatory": true,
+  "notes": "1.0.4：登录窗口完整显示；GitHub 优先更新，CloudBase 回退；强制更新到 1.0.4",
+  "published_at": "2026-11-05T16:38:06+08:00"
+}
