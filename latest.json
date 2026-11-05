@@ -1,14 +1,14 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.9",
   "minimum": "1.0.5",
-  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.7.zip",
+  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.9.zip",
   "urls": [
-    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.7/MGU-SSH-Native-Update-1.0.7.zip",
-    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.7.zip"
+    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.9/MGU-SSH-Native-Update-1.0.9.zip",
+    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.9.zip"
   ],
-  "sha256": "fbf619f16af23a30637dd5e342454b08fe3f3e462e6096dc92ace616cbcab0ef",
-  "size": 122234063,
+  "sha256": "5494c65619fbc4fb9da4004ab4025043a450f57824f9b79e58753c41214edd5d",
+  "size": 123464441,
   "mandatory": false,
-  "notes": "1.0.7：回退 CarPlay 仪表组件到 2026-11-04 已知可用版本（waze-on-cluster 0.8.1、cluster-render 0.3.7、robertn_waze_cluster 0.5.1），修复安装后车机反复重启；更新包带 data/assets，可修复缺失文件；同时包含自动更新修复（离线宽限、缓存验签、robocopy 重试与版本校验）。",
-  "published_at": "2026-11-05T22:04:23+08:00"
+  "notes": "1.0.9 安全校验测试版：内置官方 waze-on-cluster 0.9.0、cluster-render 0.4.0、仪表地图 HMI 0.6.0；修复限制性 umask 下原生投屏程序和配置权限丢失问题，增加安装前后版本/哈希/备份/权限检查及原版投屏恢复入口，移除旧黑框字节实验入口。完整包和更新包均含全部 8 个刷写素材文件。已通过本地、Linux/Node 8 权限回归和 Windows 启动检查，尚未完成完整车机模拟器及实车冷启动验收，不保证任意车辆永不循环重启。仅更新电脑软件不会自动修复车上已有程序。",
+  "published_at": "2026-11-06T00:36:50+08:00"
 }
