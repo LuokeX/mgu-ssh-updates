@@ -1,14 +1,14 @@
 {
-  "version": "1.0.4",
-  "minimum": "1.0.4",
-  "url": "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.4/MGU-SSH-Native-Update.zip",
+  "version": "1.0.5",
+  "minimum": "1.0.5",
+  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5.zip",
   "urls": [
-    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.4/MGU-SSH-Native-Update.zip",
-    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update.zip"
+    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.5/MGU-SSH-Native-Update-1.0.5.zip",
+    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5.zip"
   ],
-  "sha256": "30d0711ca2e1f26e503ede28b48f6ac1d18555bf7b62d5679035f501169be14c",
-  "size": 121721787,
+  "sha256": "49769f5c2dbbd26aa52b86bec82c03328339f6fe826d333b7149781fa21bdea2",
+  "size": 122302283,
   "mandatory": true,
-  "notes": "1.0.4：登录窗口完整显示；GitHub 优先更新，CloudBase 回退；强制更新到 1.0.4",
-  "published_at": "2026-11-05T16:38:06+08:00"
+  "notes": "1.0.5：补上 CarPlay 仪表地图安装所需的 app-privacy；修复安装器可能停在隐藏重启提示；编码丢失时给出明确提示。车机编码为默认值仍需先用 BimmerCode / ISTA / E-Sys 恢复。",
+  "published_at": "2026-11-05T17:41:29+08:00"
 }
