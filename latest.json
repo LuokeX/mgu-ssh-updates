@@ -1,14 +1,14 @@
 {
-  "version": "1.0.5",
+  "version": "1.0.7",
   "minimum": "1.0.5",
-  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5-r2.zip",
+  "url": "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.7.zip",
   "urls": [
-    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.5/MGU-SSH-Native-Update-1.0.5-r2.zip",
-    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.5-r2.zip"
+    "https://github.com/LuokeX/mgu-ssh-updates/releases/download/v1.0.7/MGU-SSH-Native-Update-1.0.7.zip",
+    "https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com/MGU-SSH-Native-Update-1.0.7.zip"
   ],
-  "sha256": "90dc0fe81b825d8717849e8a0c2259759a440e3a033f8f26d984f15bd5bb5db8",
-  "size": 122302321,
-  "mandatory": true,
-  "notes": "1.0.5（更新包 r2）：修复自动更新包时间戳导致旧文件未被覆盖；补上 CarPlay 安装所需的 app-privacy；修复安装器的隐藏重启提示；编码丢失时给出明确提示。",
-  "published_at": "2026-11-05T17:57:03+08:00"
+  "sha256": "fbf619f16af23a30637dd5e342454b08fe3f3e462e6096dc92ace616cbcab0ef",
+  "size": 122234063,
+  "mandatory": false,
+  "notes": "1.0.7：回退 CarPlay 仪表组件到 2026-11-04 已知可用版本（waze-on-cluster 0.8.1、cluster-render 0.3.7、robertn_waze_cluster 0.5.1），修复安装后车机反复重启；更新包带 data/assets，可修复缺失文件；同时包含自动更新修复（离线宽限、缓存验签、robocopy 重试与版本校验）。",
+  "published_at": "2026-11-05T22:04:23+08:00"
 }
