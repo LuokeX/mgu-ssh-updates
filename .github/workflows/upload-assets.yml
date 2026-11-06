@@ -1,0 +1,49 @@
+name: upload-release-assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version, e.g. 1.0.10"
+        required: true
+      full_sha256:
+        description: "SHA-256 of MGU-SSH-Native-<version>.zip"
+        required: true
+      update_sha256:
+        description: "SHA-256 of MGU-SSH-Native-Update-<version>.zip"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch packages from CloudBase and verify
+        env:
+          VERSION: ${{ inputs.version }}
+          FULL_SHA256: ${{ inputs.full_sha256 }}
+          UPDATE_SHA256: ${{ inputs.update_sha256 }}
+        run: |
+          set -euo pipefail
+          base="https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com"
+          full="MGU-SSH-Native-${VERSION}.zip"
+          update="MGU-SSH-Native-Update-${VERSION}.zip"
+          curl -fL --retry 5 --retry-delay 5 -o "$full" "$base/$full"
+          curl -fL --retry 5 --retry-delay 5 -o "$update" "$base/$update"
+          echo "${FULL_SHA256}  ${full}" | sha256sum -c -
+          echo "${UPDATE_SHA256}  ${update}" | sha256sum -c -
+
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          gh release upload "v${VERSION}" --clobber \
+            "MGU-SSH-Native-${VERSION}.zip" \
+            "MGU-SSH-Native-Update-${VERSION}.zip" \
+            -R "$GITHUB_REPOSITORY"
+          gh release view "v${VERSION}" -R "$GITHUB_REPOSITORY" \
+            --json assets --jq '.assets[] | "\(.name) \(.size)"'
