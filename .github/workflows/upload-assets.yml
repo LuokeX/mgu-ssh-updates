@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version, e.g. 1.0.10"
+        description: "Version, e.g. 1.0.11"
         required: true
       full_sha256:
         description: "SHA-256 of MGU-SSH-Native-<version>.zip"
@@ -15,6 +15,9 @@ on:
       setup_sha256:
         description: "SHA-256 of MGU-SSH-Setup-<version>.exe"
         required: true
+  push:
+    tags:
+      - "assets-*"
 
 permissions:
   contents: write
@@ -23,12 +26,34 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the asset list
+        id: meta
+        run: |
+          set -euo pipefail
+          if [ -n "${{ inputs.version }}" ]; then
+            version="${{ inputs.version }}"
+            full="${{ inputs.full_sha256 }}"
+            update="${{ inputs.update_sha256 }}"
+            setup="${{ inputs.setup_sha256 }}"
+          else
+            version=$(jq -r .version release-assets.json)
+            full=$(jq -r .full_sha256 release-assets.json)
+            update=$(jq -r .update_sha256 release-assets.json)
+            setup=$(jq -r .setup_sha256 release-assets.json)
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "full_sha256=$full" >> "$GITHUB_OUTPUT"
+          echo "update_sha256=$update" >> "$GITHUB_OUTPUT"
+          echo "setup_sha256=$setup" >> "$GITHUB_OUTPUT"
+
       - name: Fetch packages from CloudBase and verify
         env:
-          VERSION: ${{ inputs.version }}
-          FULL_SHA256: ${{ inputs.full_sha256 }}
-          UPDATE_SHA256: ${{ inputs.update_sha256 }}
-          SETUP_SHA256: ${{ inputs.setup_sha256 }}
+          VERSION: ${{ steps.meta.outputs.version }}
+          FULL_SHA256: ${{ steps.meta.outputs.full_sha256 }}
+          UPDATE_SHA256: ${{ steps.meta.outputs.update_sha256 }}
+          SETUP_SHA256: ${{ steps.meta.outputs.setup_sha256 }}
         run: |
           set -euo pipefail
           base="https://defiant-kangaroo-d2encfh03956269-1319395559.tcloudbaseapp.com"
@@ -45,13 +70,20 @@ jobs:
       - name: Upload release assets
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ inputs.version }}
+          VERSION: ${{ steps.meta.outputs.version }}
         run: |
           set -euo pipefail
+          sha256sum "MGU-SSH-Native-${VERSION}.zip" > "MGU-SSH-Native-${VERSION}.zip.sha256"
+          sha256sum "MGU-SSH-Native-Update-${VERSION}.zip" > "MGU-SSH-Native-Update-${VERSION}.zip.sha256"
+          sha256sum "MGU-SSH-Setup-${VERSION}.exe" > "MGU-SSH-Setup-${VERSION}.exe.sha256"
           gh release upload "v${VERSION}" --clobber \
             "MGU-SSH-Native-${VERSION}.zip" \
             "MGU-SSH-Native-Update-${VERSION}.zip" \
             "MGU-SSH-Setup-${VERSION}.exe" \
+            latest.json latest.json.sig \
+            "MGU-SSH-Native-${VERSION}.zip.sha256" \
+            "MGU-SSH-Native-Update-${VERSION}.zip.sha256" \
+            "MGU-SSH-Setup-${VERSION}.exe.sha256" \
             -R "$GITHUB_REPOSITORY"
           gh release view "v${VERSION}" -R "$GITHUB_REPOSITORY" \
             --json assets --jq '.assets[] | "\(.name) \(.size)"'
